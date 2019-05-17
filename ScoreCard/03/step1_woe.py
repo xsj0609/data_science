@@ -2,7 +2,7 @@
 """
 Created on Mon Aug 27 21:43:52 2018
 
-作者邮箱 231469242@qq.com
+@author
 """
 import numpy as np
 import pandas as pd

@@ -2,7 +2,7 @@
 """
 Created on Mon oct 1 10:44:51 2018
 
-@author: 231469242@qq.com
+@author: 
 score card评分卡制作
 """
 

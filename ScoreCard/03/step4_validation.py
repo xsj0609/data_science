@@ -2,7 +2,7 @@
 """
 Created on Thu Sep 27 10:57:19 2018
 
-@author: zhi.li04
+@author: 
 
 验证脚本
 """

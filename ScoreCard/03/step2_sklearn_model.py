@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-作者邮箱 231469242@qq.com
+@author
 """
 import pickle
 import math
