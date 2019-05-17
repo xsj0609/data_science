@@ -1,0 +1,33 @@
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:                 target   No. Observations:                  700
+Model:                          Logit   Df Residuals:                      680
+Method:                           MLE   Df Model:                           19
+Date:                Thu, 27 Sep 2018   Pseudo R-squ.:                 0.09960
+Time:                        10:55:15   Log-Likelihood:                -377.08
+converged:                       True   LL-Null:                       -418.79
+                                        LLR p-value:                 4.749e-10
+=====================================================================================================
+                                        coef    std err          z      P>|z|      [95.0% Conf. Int.]
+-----------------------------------------------------------------------------------------------------
+Account Balance                       0.7872      0.109      7.199      0.000         0.573     1.002
+Duration of Credit (month)            0.6946      0.231      3.008      0.003         0.242     1.147
+Payment Status of Previous Credit     0.6439      0.203      3.171      0.002         0.246     1.042
+Purpose                               0.4849      0.608      0.798      0.425        -0.707     1.676
+Credit Amount                         0.7990      0.366      2.182      0.029         0.081     1.517
+Value Savings/Stocks                  0.8305      0.224      3.704      0.000         0.391     1.270
+Length of current employment          0.8323      0.339      2.459      0.014         0.169     1.496
+Instalment per cent                   2.6075      0.603      4.324      0.000         1.425     3.790
+Sex & Marital Status                  1.1706      0.474      2.467      0.014         0.241     2.101
+Guarantors                            1.4867      0.696      2.137      0.033         0.123     2.851
+Duration in Current address          -2.8444      6.219     -0.457      0.647       -15.034     9.345
+Most valuable available asset         0.5625      0.338      1.666      0.096        -0.099     1.224
+Age (years)                           0.5517      0.922      0.598      0.550        -1.256     2.359
+Concurrent Credits                    0.5955      0.402      1.480      0.139        -0.193     1.384
+Type of apartment                     0.9105      0.506      1.801      0.072        -0.080     1.901
+No of Credits at this Bank            0.0676      0.955      0.071      0.944        -1.805     1.940
+Occupation                           -1.2166      1.155     -1.053      0.292        -3.481     1.047
+No of dependents                    -15.0685     14.145     -1.065      0.287       -42.793    12.656
+Telephone                             1.7119      1.285      1.332      0.183        -0.806     4.230
+Foreign Worker                        0.8215      0.430      1.910      0.056        -0.021     1.664
+=====================================================================================================
