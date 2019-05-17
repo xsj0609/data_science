@@ -1,6 +1,4 @@
-```html
-![](http://latex.codecogs.com/gif.latex?\\frac{\\partial J}{\\partial \\theta_k^{(j)}}=\\sum_{i:r(i,j)=1}{\\big((\\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\\big)x_k^{(i)}}+\\lambda \\xtheta_k^{(j)})
-```
+![](https://latex.codecogs.com/gif.latex?\begin{pmatrix}&space;a_{11}&space;&&space;\cdots&space;&&space;a_{1n}\\&space;\vdots&space;&&space;\ddots&space;&&space;\vdots\\&space;a_{m1}&space;&&space;\cdots&space;&&space;a_{mn}&space;\end{pmatrix})
 
 ### title
 $$
@@ -13,7 +11,11 @@ $$
 \end{matrix}
 \right]
 $$
-我们使用矩阵 $\bigl( \begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \bigr)$ 作为因子矩阵
+我们使用矩阵 ![](https://latex.codecogs.com/gif.latex?\bigl(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \bigr))$\bigl( \begin{smallmatrix} a & b \\ c & d \end{smallmatrix} \bigr)$ 作为因子矩阵
+
+https://latex.codecogs.com/gif.latex?\begin{align}h(x) =& \frac{1}{\int_xt(x)\mathrm{d}x} \tag{1}\\f(x) =&\frac{1}{\int_x\eta(x)\mathrm{d}x}g(x)\tag{2}\end{align}
+
+![](https://latex.codecogs.com/gif.latex?\left[\begin{array}{cc|c}1 & 2 & 3 \\4 & 5 & 6\end{array}\right])
 $$
 \left[
     \begin{array}{cc|c}
@@ -23,6 +25,7 @@ $$
 \right] \tag{7}
 $$
 
+![](https://latex.codecogs.com/gif.latex?\begin{align}h(x) =& \frac{1}{\int_xt(x)\mathrm{d}x} \tag{1}\\f(x) =&\frac{1}{\int_x\eta(x)\mathrm{d}x}g(x)\tag{2}\end{align})
 $$
 \begin{align}
 h(x) =& \frac{1}{\int_xt(x)\mathrm{d}x} \tag{1}\\
@@ -46,4 +49,6 @@ a & = & b + c \\
 & = & p + q + r + s
 \end{eqnarray}
 $$
+
+![](https://latex.codecogs.com/gif.latex?\frac{1}{3}*\frac{1}{\sqrt{x^2&plus;y^2}})
 
