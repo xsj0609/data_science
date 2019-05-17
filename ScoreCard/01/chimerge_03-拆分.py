@@ -16,7 +16,7 @@ from sklearn.metrics import roc_auc_score
 import os
 import pickle
 
-os.chdir('/Users/xushaojie/Documents/NutsCloud/My/chimerge')
+os.chdir('/Users/xushaojie/Documents/NutsCloud/data_science/ScoreCard/01/')
 
 ##@ In[2]:
 

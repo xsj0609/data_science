@@ -51,4 +51,3 @@ a & = & b + c \\
 $$
 
 ![](https://latex.codecogs.com/gif.latex?\frac{1}{3}*\frac{1}{\sqrt{x^2&plus;y^2}})
-
