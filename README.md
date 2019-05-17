@@ -1,6 +1,21 @@
-![](https://latex.codecogs.com/gif.latex?\begin{pmatrix}&space;a_{11}&space;&&space;\cdots&space;&&space;a_{1n}\\&space;\vdots&space;&&space;\ddots&space;&&space;\vdots\\&space;a_{m1}&space;&&space;\cdots&space;&&space;a_{mn}&space;\end{pmatrix})
+ 设定![](https://latex.codecogs.com/gif.latex?\theta_0)，![](https://latex.codecogs.com/gif.latex?P_0)，![](https://latex.codecogs.com/gif.latex?P_0+PD_0)
+
+违约概率![](https://latex.codecogs.com/gif.latex?p)：
+
+![](https://latex.codecogs.com/gif.latex?p=\frac{Odds}{1+Odds})
+
+如下所示：
+
+![](https://latex.codecogs.com/gif.latex?Score=A-Blog(Odds))
+
+logistic回归模型计算比率如下：
+
+![](https://latex.codecogs.com/gif.latex?log(Odds)=\beta_0+\beta_1x_1+\cdots+\beta_px_p)
+
+
 
 ### title
+
 $$
 \left[
 \begin{matrix}
