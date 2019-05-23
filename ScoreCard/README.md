@@ -50,11 +50,11 @@ Odds映射为评分的公式为：
 >
 > 则
 >
-> ![](https://latex.codecogs.com/gif.latex?Score = 6.78-14.43log(\frac{p}{1-p}))
+> ![](https://latex.codecogs.com/gif.latex?Score=6.78-14.43log(\frac{p}{1-p}))
 
 按照公式，可以把所有Odds（![](https://latex.codecogs.com/gif.latex?\frac{p}{1-p})）和客户评分、客户违约概率（PD）的对应关系算出来
 
-![image-20190523142625084](http://ww3.sinaimg.cn/large/006tNc79gy1g3b9jr7mlbj30jd0bf0yc.jpg)
+![image-20190523142625084](http://ww4.sinaimg.cn/large/006tNc79gy1g3baa4kolaj30jd0bfgms.jpg)
 
 那问题来了，现在能算Score了，但输入是Odds。但数据的输入是特征变量[![](https://latex.codecogs.com/gif.latex?x_1,x_2,x_3,\cdots,x_n)]，这里怎么对应呢？这就要说到逻辑回归本身了，先放结论：
 
@@ -99,7 +99,7 @@ Odds映射为评分的公式为：
 
 ![](https://latex.codecogs.com/gif.latex?Score=A-B\{\beta_0+(\beta_1w_{11})\delta_{11}+(\beta_1w_{12})\delta_{12}+(\beta_1w_{13})\delta_{13}+(\beta_2w_{21})\delta_{21}+(\beta_2w_{22})\delta_{22}+(\beta_2w_{23})\delta_{23}+(\beta_2w_{24})\delta_{24}+\cdots+(\beta_nw_{n1})\delta_{n1}+(\beta_nw_{n2})\delta_{n2}\})
 
-![](https://latex.codecogs.com/gif.latex?Score=(A-B\beta_0)-(B\beta_1w_{11})\delta_{11}-(B\beta_1w_{12})\delta_{12}-(B\beta_1w_{13})\delta_{13}-(B\beta_1w_{14})\delta_{14}-\cdots-(B\beta_nw_{n1})\delta_{n1}-(B\beta_n w_{n2})\delta_{n2})
+![](https://latex.codecogs.com/gif.latex?Score=(A-B\beta_0)-(B\beta_1w_{11})\delta_{11}-(B\beta_1w_{12})\delta_{12}-(B\beta_1w_{13})\delta_{13}-(B\beta_1w_{14})\delta_{14}-\cdots-(B\beta_nw_{n1})\delta_{n1}-(B\beta_nw_{n2})\delta_{n2})
 
 ![image-20190523150029384](http://ww3.sinaimg.cn/large/006tNc79gy1g3b9k40w7oj30b30c8wex.jpg)
 
