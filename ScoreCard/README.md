@@ -4,7 +4,7 @@
 
 ### <font color='blue'>一、评分卡逻辑</font>
 
-信贷业务评估的事客户的客户违约率（Percent of Default）即PD，是[0,1]的概率，比如2%即100个客户中有2个违约，简称为p。
+信贷业务评估的是客户的客户违约率（Percent of Default）即PD，是[0,1]的概率，比如2%即100个客户中有2个违约，简称为p。
 
 评分卡中不直接用客户违约率p，而是用违约概率与正常概率的比值，称为Odds，即![](https://latex.codecogs.com/gif.latex?Odds=\frac{p}{1-p})、![](https://latex.codecogs.com/gif.latex?p=\frac{Odds}{1+Odds})
 
@@ -101,6 +101,8 @@ Odds映射为评分的公式为：
 ![](https://latex.codecogs.com/gif.latex?p=\frac{1}{1+e^{-\beta^Tx}})
 
 经过变换，可得![](https://latex.codecogs.com/gif.latex?ln(\frac{p}{1-p})=\beta^Tx)
+
+
 
 ### <font color='blue'>四、X变量细分到分组</font>
 
