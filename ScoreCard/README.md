@@ -2,6 +2,8 @@
 
 ![image-20190523133945774](http://ww2.sinaimg.cn/large/006tNc79gy1g3b9j83uydj308l064mxk.jpg)
 
+### <font color='blue'>一、评分卡逻辑</font>
+
 信贷业务评估的事客户的客户违约率（Percent of Default）即PD，是[0,1]的概率，比如2%即100个客户中有2个违约，简称为p。
 
 评分卡中不直接用客户违约率p，而是用违约概率与正常概率的比值，称为Odds，即![](https://latex.codecogs.com/gif.latex?Odds=\frac{p}{1-p})、![](https://latex.codecogs.com/gif.latex?p=\frac{Odds}{1+Odds})
@@ -12,9 +14,13 @@
 
 因此评分卡的生成过程，就是Odds变动映射成评分变动的过程。
 
+### <font color='blue'>二、评分映射公式</font>
+
 Odds映射为评分的公式为：
 
 ![](https://latex.codecogs.com/gif.latex?Score=A-Blog(\frac{p}{1-p}))
+
+#### <font color='blue'><1> 预设条件</font>
 
 要算出系数A、B的话，需要从业务角度先预设两个前提条件：
 
@@ -27,6 +33,8 @@ Odds映射为评分的公式为：
 > 2. 这里![](https://latex.codecogs.com/gif.latex?\theta_0)=5%是根据业务经验来的，没有数学依据；
 > 3. 0-100分是根据做评分卡的需要来的，没有数学依据。要是想做成600-1000分的评分卡也可以，修改对应的![](https://latex.codecogs.com/gif.latex?P_0)和PDO就行；
 > 4. ![](https://latex.codecogs.com/gif.latex?P_0)=50分是根据0-100分来的，也可以取45分或73分，不重要。重要的是随着Odds翻番变动时，分数也随之变动的联动变化体系（你翻番我就变PDO=10分）
+
+#### <font color='blue'><2> 求解A、B</font>
 
 设定好![](https://latex.codecogs.com/gif.latex?\theta_0)、![](https://latex.codecogs.com/gif.latex?P_0)、PDO后，联动变化为：Odds( ![](https://latex.codecogs.com/gif.latex?\theta_0))对应的分值为![](https://latex.codecogs.com/gif.latex?P_0)，且翻番的Odds(2![](https://latex.codecogs.com/gif.latex?\theta_0))对应的分值为![](https://latex.codecogs.com/gif.latex?P_0)+PDO。则有以下两式：
 
@@ -52,15 +60,23 @@ Odds映射为评分的公式为：
 >
 > ![](https://latex.codecogs.com/gif.latex?Score=6.78-14.43log(\frac{p}{1-p}))
 
+#### <font color='blue'><3> 完整的对应关系表</font>
+
 按照公式，可以把所有Odds（![](https://latex.codecogs.com/gif.latex?\frac{p}{1-p})）和客户评分、客户违约概率（PD）的对应关系算出来
 
 ![image-20190523142625084](http://ww4.sinaimg.cn/large/006tNc79gy1g3baa4kolaj30jd0bfgms.jpg)
+
+> <font color='red'>该关系对应表应该算信用评分卡的核心思想了，评分是外层表现，客户违约率是内层核心，Odds是中间层转换计算</font>
+
+### <font color='blue'>三、Odds映射X变量</font>
 
 那问题来了，现在能算Score了，但输入是Odds。但数据的输入是特征变量[![](https://latex.codecogs.com/gif.latex?x_1,x_2,x_3,\cdots,x_n)]，这里怎么对应呢？这就要说到逻辑回归本身了，先放结论：
 
 ![](https://latex.codecogs.com/gif.latex?log(\frac{p}{1-p})=\beta_0+\beta_1x_1+\beta_2x_2+\cdots+\beta_nx_n)
 
 怎么来的，以下详细讲。
+
+#### <1> Sigmoid
 
 逻辑回归来源于线性回归（二维空间中就是一条直线拟合所有样本点），虽然线性回归是回归算法，逻辑回归是分类算法，但从算法表达式上，逻辑回归就是在线性回归算法外面套了一层壳。
 
@@ -78,11 +94,15 @@ Odds映射为评分的公式为：
 
 可以看到，从表达式上看，逻辑回归只是在线性回归的表达式外面套了一层![](https://latex.codecogs.com/gif.latex?f(x)=\frac{1}{1+e^{-x}})的壳。为什么要套这层壳，因为线性回归的值域为实数集R，但逻辑回归是二分类算法，需要输出的是类别1和类别2的概率，而概率是个[0, 1]之间的数。因此需要将线性回归的输出实数变成[0, 1]之间的概率，而能满足输入是实数而输出是[0, 1]的，就是Sigmoid函数，它的图形是个类S（见上面逻辑回归图）的限定在[0, 1]之间的函数。因此将Sigmoid函数套在线性回归外面，构成逻辑回归，拥有处理非线性的能力，可以做分类。
 
+#### <2> 变换公式形式
+
 那么在信贷评分卡上，![](https://latex.codecogs.com/gif.latex?f(x))即为要预测的客户违约率（PD）![](https://latex.codecogs.com/gif.latex?p)，另将![](https://latex.codecogs.com/gif.latex?\beta_0+\beta_1x_1+\beta_2x_2+\cdots+\beta_nx_n)简写为向量形式![](https://latex.codecogs.com/gif.latex?\beta^Tx)，即：
 
 ![](https://latex.codecogs.com/gif.latex?p=\frac{1}{1+e^{-\beta^Tx}})
 
 经过变换，可得![](https://latex.codecogs.com/gif.latex?ln(\frac{p}{1-p})=\beta^Tx)
+
+### <font color='blue'>四、X变量细分到分组</font>
 
 好，回到主线，![](https://latex.codecogs.com/gif.latex?log(\frac{p}{1-p})=\beta_0+\beta_1x_1+\beta_2x_2+\cdots+\beta_nx_n)，将score公式中的输入p变成输入特征变量X。到这里按理就可以结束了，有X就可以产出客户的Score，即：
 
@@ -94,6 +114,8 @@ Odds映射为评分的公式为：
 
 > 1. 假设类别型变量![](https://latex.codecogs.com/gif.latex?x_1)、![](https://latex.codecogs.com/gif.latex?x_2)、![](https://latex.codecogs.com/gif.latex?x_n)分别有3、4、2个分类（数值型变量先分箱成类别型变量）
 > 2. ![](https://latex.codecogs.com/gif.latex?\delta_{ij})代表第i个变量的第j个分类，客户数据参与评分时，某个变量x只会有1个数，只会对应一个分类。比如，变量![](https://latex.codecogs.com/gif.latex?x_1)的取值是第2个分类的话，那![](https://latex.codecogs.com/gif.latex?\delta_{12})为1，则第二个分类的woe值![](https://latex.codecogs.com/gif.latex?w_{12})生效，![](https://latex.codecogs.com/gif.latex?x_1)的其他两个![](https://latex.codecogs.com/gif.latex?\delta)则为0，对应的其他两个分类的woe值无效不参与计算
+
+### <font color='blue'>五、生成评分卡</font>
 
 将上面的公式变下形式，变成最终可以组成评分卡的样式，即：
 
