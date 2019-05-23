@@ -107,4 +107,4 @@ Odds映射为评分的公式为：
 
 > A、B已经算出，![](https://latex.codecogs.com/gif.latex?\beta)是逻辑回归模型的输出系数，![](https://latex.codecogs.com/gif.latex?\beta_0)是逻辑回归模型的输出截距项，w是分箱后的woe值
 
-至此评分卡就可以生成了。
+嗯，至此评分卡就可以生成了。
