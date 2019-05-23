@@ -90,16 +90,16 @@ Odds映射为评分的公式为：
 
 但我们要做的是分组评分卡，X是要对应到每个分组，得到各变量分组的评分然后相加得到客户总评分的，那就还需要将X打散到各分类（用离散型数据入逻辑回归模型）。因此这里的输入X就不能是原始变量，而是原始变量分箱并算WOE后的woe值（类似离散变量中各类别的数值化），即：
 
-![](https://latex.codecogs.com/gif.latex?Score=A-B\{\beta_0+\beta_1(\delta_{11}w_{11}+\delta_{12}w_{12}+\delta_{13}w_{13})+\beta_2(\delta_{21}w_{21}+\delta_{22}w_{22}+\delta_{23}w_{23}+\delta_{24}w_{24})+\cdots+\beta_n(\delta_{n1}w_{n1}+\delta_{n2}w_{n2})\})
+![](https://latex.codecogs.com/gif.latex?Score=A-B[\beta_0+\beta_1(\delta_{11}w_{11}+\delta_{12}w_{12}+\delta_{13}w_{13})+\beta_2(\delta_{21}w_{21}+\delta_{22}w_{22}+\delta_{23}w_{23}+\delta_{24}w_{24})+\cdots+\beta_n(\delta_{n1}w_{n1}+\delta_{n2}w_{n2})])
 
 > 1. 假设类别型变量![](https://latex.codecogs.com/gif.latex?x_1)、![](https://latex.codecogs.com/gif.latex?x_2)、![](https://latex.codecogs.com/gif.latex?x_n)分别有3、4、2个分类（数值型变量先分箱成类别型变量）
 > 2. ![](https://latex.codecogs.com/gif.latex?\delta_{ij})代表第i个变量的第j个分类，客户数据参与评分时，某个变量x只会有1个数，只会对应一个分类。比如，变量![](https://latex.codecogs.com/gif.latex?x_1)的取值是第2个分类的话，那![](https://latex.codecogs.com/gif.latex?\delta_{12})为1，则第二个分类的woe值![](https://latex.codecogs.com/gif.latex?w_{12})生效，![](https://latex.codecogs.com/gif.latex?x_1)的其他两个![](https://latex.codecogs.com/gif.latex?\delta)则为0，对应的其他两个分类的woe值无效不参与计算
 
 将上面的公式变下形式，变成最终可以组成评分卡的样式，即：
 
-![](https://latex.codecogs.com/gif.latex?Score & =A-B\{\beta_0+(\beta_1w_{11})\delta_{11}+(\beta_1w_{12})\delta_{12}+(\beta_1w_{13})\delta_{13}+(\beta_2w_{21})\delta_{21}+(\beta_2w_{22})\delta_{22}+(\beta_2w_{23})\delta_{23}+(\beta_2w_{24})\delta_{24}+\cdots+(\beta_nw_{n1})\delta_{n1}+(\beta_nw_{n2})\delta_{n2}\})
+![](https://latex.codecogs.com/gif.latex?Score=A-B\{\beta_0+(\beta_1w_{11})\delta_{11}+(\beta_1w_{12})\delta_{12}+(\beta_1w_{13})\delta_{13}+(\beta_2w_{21})\delta_{21}+(\beta_2w_{22})\delta_{22}+(\beta_2w_{23})\delta_{23}+(\beta_2w_{24})\delta_{24}+\cdots+(\beta_nw_{n1})\delta_{n1}+(\beta_nw_{n2})\delta_{n2}\})
 
-![](https://latex.codecogs.com/gif.latex?Score= (A-B\beta_0)-(B\beta_1w_{11})\delta_{11}-(B\beta_1w_{12})\delta_{12}-(B\beta_1w_{13})\delta_{13}-(B\beta_1w_{14})\delta_{14}-\cdots-(B\beta_nw_{n1})\delta_{n1}-(B\beta_n w_{n2})\delta_{n2})
+![](https://latex.codecogs.com/gif.latex?Score=(A-B\beta_0)-(B\beta_1w_{11})\delta_{11}-(B\beta_1w_{12})\delta_{12}-(B\beta_1w_{13})\delta_{13}-(B\beta_1w_{14})\delta_{14}-\cdots-(B\beta_nw_{n1})\delta_{n1}-(B\beta_n w_{n2})\delta_{n2})
 
 ![image-20190523150029384](http://ww3.sinaimg.cn/large/006tNc79gy1g3b9k40w7oj30b30c8wex.jpg)
 
