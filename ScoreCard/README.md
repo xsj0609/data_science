@@ -24,18 +24,6 @@ Odds映射为评分的公式为：
 
 要算出系数A、B的话，需要从业务角度先预设两个前提条件：
 
-1. 在某个``` diff + 特定的比率 ``` ![](https://latex.codecogs.com/gif.latex?\theta_0)设定<font color='blue'>特定的预期分值</font>![](https://latex.codecogs.com/gif.latex?P_0)
-2. 指定比率翻番时<font color='red'>分数的变动值</font>（PDO）
-
-``` diff
-+deng
--dddd
-```
-
- ```+ 特定的比率 ```
-
-要算出系数A、B的话，需要从业务角度先预设两个前提条件：
-
 1. 在某个<font color='green'>特定的比率</font>![](https://latex.codecogs.com/gif.latex?\theta_0)设定<font color='blue'>特定的预期分值</font>![](https://latex.codecogs.com/gif.latex?P_0)
 2. 指定比率翻番时<font color='red'>分数的变动值</font>（PDO）
 
