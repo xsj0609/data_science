@@ -19,8 +19,10 @@ import os
 import pickle
 import copy
 
-os.chdir('/Users/xushaojie/Documents/NutsCloud/data_science/ScoreCard/01/')
-
+# os.chdir('/Users/xushaojie/Documents/NutsCloud/data_science/ScoreCard/01_chimerge/')
+os.chdir('D:/Server/NutsCloud/data_science/ScoreCard/01_chimerge/')
+'''
+# Test 01
 arr_X, arr_y = datasets.make_classification(
             n_samples=50, 
             n_features=2, 
@@ -33,8 +35,11 @@ arr_X, arr_y = datasets.make_classification(
 df_X = pd.DataFrame(arr_X)
 for col in df_X.columns:
     print(len(np.unique(df_X[col])))
+'''
 
-data_list = \
+'''
+# Test 02
+data_01 = \
     [['青绿','蜷缩','浊响','清晰','凹陷','硬滑',0.697,0.460,'是'],
     ['乌黑','蜷缩','沉闷','清晰','凹陷','硬滑',0.774,0.376,'是'],
     ['乌黑','蜷缩','浊响','清晰','凹陷','硬滑',0.634,0.264,'是'],
@@ -53,11 +58,10 @@ data_list = \
     ['浅白','蜷缩','浊响','模糊','平坦','硬滑',0.593,0.042,'否'],
     ['青绿','蜷缩','沉闷','稍糊','稍凹','硬滑',0.719,0.103,'否']]
 
-data = pd.DataFrame(data_list)
-data.columns = ['色泽','根蒂','敲声','纹理','脐部','触感','密度','含糖率','好瓜']
-print(data)
+data_02 = pd.DataFrame(data_01)
+data_02.columns = ['色泽','根蒂','敲声','纹理','脐部','触感','密度','含糖率','好瓜']
 
-data_01 = copy.deepcopy(data)
+data = copy.deepcopy(data_02)
 replace_dict = {
     '青绿':0, '浅白':1, '乌黑':2,
     '蜷缩':0, '稍蜷':1, '硬挺':2,
@@ -69,14 +73,54 @@ replace_dict = {
 }
 
 replace_cols = ['色泽', '根蒂', '敲声', '纹理', '脐部', '触感', '好瓜']
-replace_cols = ['col_1', 'col_2', 'col_3', 'col_4', 'col_5', 'col_6', 'target']
 for col in replace_cols:
-    data_01[col].replace(replace_dict, inplace=True)
+    data[col].replace(replace_dict, inplace=True)
 
-print(data_01)
+data.columns = ['col_1', 'col_2', 'col_3', 'col_4', 'col_5', 'col_6', 'col_7', 'col_8', 'y']
+print(data)
+'''
 
+# Test 03
+data_01_list = \
+    [[19,3,'Part Time',1],
+    [20,1,'Part Time',1],
+    [21,2,'Part Time',1],
+    [22,-1,'Part Time',1],
+    [23,0,'Part Time',1],
+    [24,5,'Part Time',0],
+    [25,1,'Part Time',1],
+    [26,2,'Part Time',1],
+    [27,1,'Full Time',1],
+    [28,2,'Full Time',0],
+    [29,1,'Full Time',0],
+    [30,2,'Full Time',0],
+    [33,6,'Full Time',1],
+    [34,5,'Full Time',0],
+    [35,6,'Part Time',0],
+    [36,5,'Part Time',0],
+    [37,6,'Full Time',0],
+    [38,5,'Full Time',0],
+    [48,4,'Full Time',1],
+    [49,3,'Others',1],
+    [50,4,'Full Time',0],
+    [51,3,'Others',0],
+    [52,4,'Others',0],
+    [53,3,'Others',0],
+    [56,-1,'Others',1],
+    [57,0,'Others',1],
+    [58,-1,'Others',1],
+    [59,0,'Others',1],
+    [60,-1,'Others',0],
+    [61,0,'Others',0]]
+    
+data_02_df = pd.DataFrame(data_01_list)
+data_02_df.columns = ['Age', 'TaCA', 'ES', 'y']
+data = data_02_df
+
+'''
+# Test 04
 from sklearn.linear_model.logistic import LogisticRegression
-data_list = \
+data_01_list = \
         [['0.70','-0.12','0.37',1],
         ['0.70','0.22','0.37',1],
         ['0.70','0.22','0.37',1],
@@ -108,16 +152,18 @@ data_list = \
         ['0.30','0.48','0',0],
         ['0.30','0.48','0',0]]
 
-data = pd.DataFrame(data_list)
+data = pd.DataFrame(data_01_list)
 data.columns = ['Age_WOE', 'TaCA_WOE', 'ES_WOE', 'y']
-print(data)
+X_train, y_train = data.loc[:, ('Age_WOE', 'TaCA_WOE', 'ES_WOE')], data['y']
 
 clf = LogisticRegression()
 clf.fit(X_train, y_train)
 
 list_coef = list(clf.coef_[0])
 intercept= clf.intercept_
+'''
 
+allFeatures = data.columns
 ###函数########
 #计算变量分箱之后各分箱的坏样本率
 def BinBadRate(df, col, target, grantRateIndicator=0):
@@ -218,7 +264,7 @@ categoricalFeatures = []
 numericalFeatures = []
 WOE_IV_dict = {}
 for var in allFeatures:
-    if len(set(data_01[var])) > 10:
+    if len(set(data[var])) > 5:
         numericalFeatures.append(var)
     else:
         categoricalFeatures.append(var)
@@ -226,7 +272,7 @@ for var in allFeatures:
 not_monotone =[]
 for var in categoricalFeatures:
     #检查bad rate在箱中的单调性
-    if not BadRateMonotone(data_01, var, 'label'):
+    if not BadRateMonotone(data, var, 'y'):
         not_monotone.append(var)
 
 #print("数值取值小于5类别型变量{}坏样本率不单调".format(not_monotone))
@@ -235,32 +281,32 @@ for var in categoricalFeatures:
 类别型变量
 不单调
 手动分箱
-'''
+
 # 'M1FreqL3M'，'M2FreqL3M', 'maxDelqL12M' 是不单调的，需要合并其中某些类别
-data_01.groupby(['M2FreqL3M'])['label'].mean()  #检查单调性
-data_01.groupby(['M2FreqL3M'])['label'].count()   #其中，M2FreqL3M＝3总共只有3个样本，因此要进行合并
+data_01.groupby(['M2FreqL3M'])['y'].mean()  #检查单调性
+data_01.groupby(['M2FreqL3M'])['y'].count()   #其中，M2FreqL3M＝3总共只有3个样本，因此要进行合并
 
 # 将 M2FreqL3M>=1的合并为一组，计算WOE和IV
 data_01['M2FreqL3M_Bin'] = data_01['M2FreqL3M'].apply(lambda x: int(x>=1))
-data_01.groupby(['M2FreqL3M_Bin'])['label'].mean()
+data_01.groupby(['M2FreqL3M_Bin'])['y'].mean()
 
 ############
 ############
 ############
-WOE_IV_dict['M2FreqL3M_Bin'] = CalcWOE(data_01, 'M2FreqL3M_Bin', 'label')
+WOE_IV_dict['M2FreqL3M_Bin'] = CalcWOE(data_01, 'M2FreqL3M_Bin', 'y')
  
-data_01.groupby(['M1FreqL3M'])['label'].mean()  #检查单调性
-data_01.groupby(['M1FreqL3M'])['label'].count()
+data_01.groupby(['M1FreqL3M'])['y'].mean()  #检查单调性
+data_01.groupby(['M1FreqL3M'])['y'].count()
  
 # 除了M1FreqL3M＝3外， 其他组别的bad rate单调。
 # 此外，M1FreqL3M＝0 占比很大，因此将M1FreqL3M>=1的分为一组
 data_01['M1FreqL3M_Bin'] = data_01['M1FreqL3M'].apply(lambda x: int(x>=1))
-data_01.groupby(['M1FreqL3M_Bin'])['label'].mean()
-WOE_IV_dict['M1FreqL3M_Bin'] = CalcWOE(data_01, 'M1FreqL3M_Bin', 'label')
+data_01.groupby(['M1FreqL3M_Bin'])['y'].mean()
+WOE_IV_dict['M1FreqL3M_Bin'] = CalcWOE(data_01, 'M1FreqL3M_Bin', 'y')
 
-'''
-对其他单调的类别型变量，检查是否有一箱的占比低于5%。 如果有，将该变量进行合并
-'''
+
+# 对其他单调的类别型变量，检查是否有一箱的占比低于5%。 如果有，将该变量进行合并
+
 small_bin_var = []
 large_bin_var = []
 N = data_01.shape[0]
@@ -275,9 +321,10 @@ for var in categoricalFeatures:
  
  
 #对于M2FreqL1M、M2FreqL6M和M2FreqL12M，由于有部分箱占了很大比例，故删除，因为样本表现99%都一样，这个变量没有区分度
-allFeatures.remove('M2FreqL1M')
-allFeatures.remove('M2FreqL6M')
-allFeatures.remove('M2FreqL12M')
+
+# allFeatures.remove('M2FreqL1M')
+# allFeatures.remove('M2FreqL6M')
+# allFeatures.remove('M2FreqL12M')
 
 
 def MergeByCondition(x,condition_list):
@@ -295,17 +342,17 @@ data_01['maxDelqL1M_Bin'] = data_01['maxDelqL1M'].apply(lambda x: MergeByConditi
 data_01['maxDelqL3M_Bin'] = data_01['maxDelqL3M'].apply(lambda x: MergeByCondition(x,['==0','==1','>=2']))
 data_01['maxDelqL6M_Bin'] = data_01['maxDelqL6M'].apply(lambda x: MergeByCondition(x,['==0','==1','>=2']))
 for var in ['maxDelqL1M_Bin','maxDelqL3M_Bin','maxDelqL6M_Bin']:
-    WOE_IV_dict[var] = CalcWOE(data_01, var, 'label')
- 
+    WOE_IV_dict[var] = CalcWOE(data_01, var, 'y')
+''' 
  
 '''
 类别型变量
 单调
 对于不需要合并、原始箱的bad rate单调的特征，直接计算WOE和IV
-'''
-for var in large_bin_var:
-    WOE_IV_dict[var] = CalcWOE(data_01, var, 'label')
 
+for var in large_bin_var:
+    WOE_IV_dict[var] = CalcWOE(data_01, var, 'y')
+'''
 
 '''
 连续型变量
@@ -553,21 +600,55 @@ def ChiMerge(df, col, target, max_interval=5,special_attribute=[],minBinPcnt=0):
 2，bad rate单调
 3，每箱占比不低于5%
 '''
+binNums = {'Age':5, 'TaCA':3}
 bin_dict = []
 for var in numericalFeatures:
-    binNum = 5
+    binNum = binNums[var]+1
     newBin = var + '_Bin'
-    bin = ChiMerge(data_01, var, 'label',max_interval=binNum,minBinPcnt = 0.05)
-    data_01[newBin] = data_01[var].apply(lambda x: AssignBin(x,bin))
+    bin = ChiMerge(data, var, 'y',max_interval=binNum,minBinPcnt = 0.05)
+    data[newBin] = data[var].apply(lambda x: AssignBin(x,bin))
     # 如果不满足单调性，就降低分箱个数
-    while not BadRateMonotone(data_01, newBin, 'label'):
+    while not BadRateMonotone(data, newBin, 'y'):
         binNum -= 1
-        bin = ChiMerge(data_01, var, 'label', max_interval=binNum, minBinPcnt=0.05)
-        data_01[newBin] = data_01[var].apply(lambda x: AssignBin(x, bin))
-    WOE_IV_dict[newBin] = CalcWOE(data_01, newBin, 'label')
+        bin = ChiMerge(data, var, 'y', max_interval=binNum, minBinPcnt=0.05)
+        data[newBin] = data[var].apply(lambda x: AssignBin(x, bin))
+    WOE_IV_dict[newBin] = CalcWOE(data, newBin, 'y')
     bin_dict.append({var:bin})
+print('********* 分箱结果（分割点）************')
+print(bin_dict)
 
+def value2bin(x,cutoffs):    
+    '''
+    将变量的值转换成相应的组。
+    x: 需要转换到分组的值
+    cutoffs: 各组的起始值。
+    return: x对应的组，如group1。从group1开始。
+    '''    
+    #切分点从小到大排序。
+    cutoffs = sorted(cutoffs)
+    num_bins = len(cutoffs)    
+    #异常情况：小于第一组的起始值。这里直接放到第一组。    
+    #异常值建议在分组之前先处理妥善。
+    '''    
+    if x < cutoffs[0]:        
+        return 'bin1_(-, %s)' % cutoffs[0]
+    for i in range(1,num_bins):        
+        if cutoffs[i-1] <= x < cutoffs[i]:            
+            return 'bin%s_[%s, %s)' % (i, cutoffs[i-1], cutoffs[i])   
+    #最后一组，也可能会包括一些非常大的异常值。
+    return 'bin%s_[%s, +)' % (num_bins, cutoffs[-1])
+    '''
+    cutoffs = [float('-inf')] + cutoffs + [np.inf]
+    for i in range(1, len(cutoffs)):
+        if cutoffs[i-1] <= x < cutoffs[i]:            
+            return 'bin%s_[%s, %s)' % (i, cutoffs[i-1], cutoffs[i]) 
 
+for bin_d in bin_dict:
+    col = list(bin_d.keys())[0]
+    cutoffs = bin_d[col]
+    data[col+'_Bin'] = data[col].apply(value2bin,args=(cutoffs,))
+print(data)
+'''
 ##@ In[7]:
 
 
@@ -586,3 +667,4 @@ plt.bar(range(len(IV_values)),IV_values)
 for (var,iv) in high_IV:
     newVar = var+"_WOE"
     data_01[newVar] = data_01[var].map(lambda x: WOE_IV_dict[var]['WOE'][x])
+'''
