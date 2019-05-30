@@ -6,7 +6,7 @@
 
 ![](https://latex.codecogs.com/gif.latex?f(x)=w_0+w_1x_1+w_2x_2+\cdots+w_nx_n)
 
-![](https://latex.codecogs.com/gif.latex?f(x))的值域为![](https://latex.codecogs.com/gif.latex?(-\infty, +\infty))，![](https://latex.codecogs.com/gif.latex?x)为输入变量，![](https://latex.codecogs.com/gif.latex?w)为系数
+![](https://latex.codecogs.com/gif.latex?f(x))的值域为![](https://latex.codecogs.com/gif.latex?(-\infty,+\infty))，![](https://latex.codecogs.com/gif.latex?x)为输入变量，![](https://latex.codecogs.com/gif.latex?w)为系数
 
 线性回归的训练过程，就是将![](https://latex.codecogs.com/gif.latex?w)以<font color='red'>某种规律</font>变动，每变动一次![](https://latex.codecogs.com/gif.latex?w)，就与固定的输入![](https://latex.codecogs.com/gif.latex?x)计算得到训练中的![](https://latex.codecogs.com/gif.latex?f(x))输出（记为![](https://latex.codecogs.com/gif.latex?y^{(i)})）。
 
@@ -14,7 +14,7 @@
 
 训练是要达到好的效果的，怎么评估训练效果呢，最简单直接的方法就是算原始标签![](https://latex.codecogs.com/gif.latex?y)与训练得到的![](https://latex.codecogs.com/gif.latex?y^{(i)})相减求<font color='red'>训练误差</font>。训练时所有样本的总训练误差的函数表示即误差函数，用公式表达可以写成：
 
-![](https://latex.codecogs.com/gif.latex?L(w)=\sum_{i=1}^m (y^{(i)}-y]^2)
+![](https://latex.codecogs.com/gif.latex?L(w)=\sum_{i=1}^m(y^{(i)}-y]^2)
 
 模型好就是训练误差小，即损失函数最小。因此训练目的就是取得L(w)最小时的系数w。（有了系数w，在新样本来时，就可以输入x变量，与系数计算得到预测y值了）
 
@@ -38,7 +38,7 @@
 
 设第j个变量的系数为![](https://latex.codecogs.com/gif.latex?w_j)，![](https://latex.codecogs.com/gif.latex?\lambda)为按导数变化多少倍数，t为迭代第几轮，m为总样本数，![](https://latex.codecogs.com/gif.latex?\sigma)为导数。则w的梯度下降表达式为：
 
-![](https://latex.codecogs.com/gif.latex?w_j^{(t+1)}=w_j^{(t)}-\lambda \sum_{i=1}^m \sigma(w))
+![](https://latex.codecogs.com/gif.latex?w_j^{(t+1)}=w_j^{(t)}-\lambda\sum_{i=1}^m\sigma(w))
 
 > 虽然理论上令导数=0就可以直接求得最好的系数，实际应用的时候，由于变量数多、样本量大，自然不可能求解联立方程组一样去求解
 
