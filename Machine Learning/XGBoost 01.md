@@ -1,7 +1,6 @@
 ## 得到LogisR的代价函数$J(\theta)$
 
 
-
 LogisR与LinearR的$h_\theta​$函数不一样，若$J(\theta) ​$直接仿照LinearR【$ J(\theta)=\frac{1}{2m} \sum(h_\theta(x^{(i)})-y^{(i)})^2​$】，导数会得到非凸优化（不能用梯度下降求解）。
 
 $J(\theta)​$的导数得是凸优化，因为$h_\theta​$不一样，所以$J(\theta)​$另行考虑为：

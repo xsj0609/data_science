@@ -5,7 +5,6 @@ import progressbar
 from decision_tree.decision_tree_model import DecisionTree
 from utils.misc import bar_widgets
 
-
 class LeastSquaresLoss():
     """Least squares loss"""
 
