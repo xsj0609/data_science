@@ -10,6 +10,8 @@
 
 [ScoreCard](https://github.com/xsj0609/data_science/blob/master/SQL/SQL01-%E5%89%8D%E8%A8%80.md)
 
+[……]()
+
 
 
 <font size='5' color='blue'>3. Machine Learning</font>
@@ -18,6 +20,12 @@
 
 [ML LR01-代价函数](https://github.com/xsj0609/data_science/blob/master/Machine%20Learning/ML%20LR01-%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0.md)
 
+[决策树](https://github.com/xsj0609/data_science/blob/master/Machine%20Learning/DecisionTree%2001.md)
+
+[XGBoost](https://github.com/xsj0609/data_science/blob/master/Machine%20Learning/XGBoost%2001.md)
+
+[……]()
+
 
 
 <font size='5' color='blue'>4. Neuron Network</font>
@@ -25,6 +33,8 @@
 [01-激活函数](https://github.com/xsj0609/data_science/blob/master/Neuron%20Network/Neuron%20Network%2001-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.md)
 
 [02-反向传播](https://github.com/xsj0609/data_science/blob/master/Neuron%20Network/Neuron%20Network%2002-%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD.md)
+
+[……]()
 
 
 

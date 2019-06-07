@@ -1,15 +1,17 @@
 ## 逻辑回归的代价函数$L(w,b)$
 
+<img src="https://latex.codecogs.com/gif.latex?\begin{pmatrix}&space;a_{11}&space;&&space;\cdots&space;&&space;a_{1n}\\&space;\vdots&space;&&space;\ddots&space;&&space;\vdots\\&space;a_{m1}&space;&&space;\cdots&space;&&space;a_{mn}&space;\end{pmatrix}">
 
 
 
+LogisR与LinearR的![](https://latex.codecogs.com/gif.latex?h_\theta)函数不一样，若$L(w,b) $直接仿照LinearR <img src="https://latex.codecogs.com/gif.latex?L(w,b)=\frac{1}{2m}\sum(p(y=1|x,w)-y^{(i)})^2">，导数会得到非凸优化（不能用梯度下降求解）。
 
-LogisR与LinearR的$h_\theta$函数不一样，若$L(w,b) $直接仿照LinearR【$ L(w,b)=\frac{1}{2m} \sum(p(y=1|x,w)-y^{(i)})^2$】，导数会得到非凸优化（不能用梯度下降求解）。
+L(w,b)的导数得是凸优化，因为![](https://latex.codecogs.com/gif.latex?h_\theta)不一样，所以L(w,b)另行考虑为：
 
-$L(w,b)$的导数得是凸优化，因为$h_\theta$不一样，所以$L(w,b)$另行考虑为：
-$$
-L(w,b)= \sum_{i=1}^{m}Cost(p(y=1|x,w), y^{(i)})
-$$
+![](https://latex.codecogs.com/gif.latex?L(w,b)=\sum_{i=1}^{m}Cost(p(y=1|x,w),y^{(i)}))
+
+
+
 其中
 $$
 \begin{align}
@@ -22,9 +24,10 @@ Cost(h_\theta(x), y) & = \begin{cases}
 \end{align}
 $$
 因此
-$$
-L(w,b)=- \sum_{i=1}^{m}\left[y^{(i)}log(p(y=1|x,w))+(1-y^{(i)})log(1-p(y=1|x,w))\right] \tag{p.s. for code}
-$$
+
+<img src="https://latex.codecogs.com/svg.latex?L(w,b)=-\sum_{i=1}^{m}\left(y^{(i)}log(p(y=1|x,w))&plus;(1-y^{(i)})log(1-p(y=1|x,w))\right)" align="left">
+
+
 
 ## 论证LogisR代价函数$L(w,b)$的梯度下降求解算法（导数）与LinearR的一样，也是凸优化问题
 
