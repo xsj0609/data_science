@@ -40,15 +40,15 @@ SQL的学习和练习推荐网上的《SQL经典50题》，是学生、课程、
 
 1. 基础形状1：单表
 
-![](D:\Business\04DataTeach\lesson01 SQL\01_001.png)
+![](http://ww1.sinaimg.cn/large/006tNc79gy1g3sdgr9xg9j306905ma9v.jpg)
 
 
 
 2. 基础形状2：多表
 
-   ![](D:\Business\04DataTeach\lesson01 SQL\01_002.png)
+   ![](http://ww4.sinaimg.cn/large/006tNc79gy1g3sdhdiu4vj30j40e4q35.jpg)
 
-![](D:\Business\04DataTeach\lesson01 SQL\01_003.png)
+![](http://ww4.sinaimg.cn/large/006tNc79gy1g3sdhn44lsj30cw087glj.jpg)
 
 如上图所示：
 
@@ -91,8 +91,13 @@ SQL的学习和练习推荐网上的《SQL经典50题》，是学生、课程、
 
 GROUP BY Cid，按Cid列分组
 
-![](D:\Business\04DataTeach\lesson01 SQL\01_004.png)
+![](http://ww4.sinaimg.cn/large/006tNc79gy1g3sdhn1r1aj30jg0c4weq.jpg)
 
-![](D:\Business\04DataTeach\lesson01 SQL\01_005.png)
+![](http://ww3.sinaimg.cn/large/006tNc79gy1g3sdhmzgg5j307l0l2glr.jpg)
 
 各分组内部做聚合计算
+
+![](http://ww2.sinaimg.cn/large/006tNc79gy1g3sdhmx4quj30ji0ce0sz.jpg)
+
+![](http://ww4.sinaimg.cn/large/006tNc79gy1g3sdhmpwerj30h50keq39.jpg)
+
