@@ -34,6 +34,8 @@
 
 [02-反向传播](https://github.com/xsj0609/data_science/blob/master/Neuron%20Network/Neuron%20Network%2002-%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD.md)
 
+[03-手写数字识别（TensorFlow MNIST）](https://github.com/xsj0609/data_science/blob/master/Neuron%20Network/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/TensorFlow%20MNIST.ipynb)
+
 [……]()
 
 
