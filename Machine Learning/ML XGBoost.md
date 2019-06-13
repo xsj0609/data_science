@@ -88,7 +88,13 @@ XGBoost的指导思想就是用后一棵树拟合前一棵树的残差，然后�
 
 > 一个叶子节点的得分值可以理解为满足同一条件的多个样本（决策树的某条分支）的预测值prediction，训练过程中某条分支上的多个样本的预测值都等于所处叶子节点的得分值。
 
+![image-20190613135002610](http://ww3.sinaimg.cn/large/006tNc79gy1g3zhe4vdmsj30fo05gjrp.jpg)
+
 > 在由公式3到公式4的推导中，代价函数的目标不变，仍然是最小化<img src="https://latex.codecogs.com/svg.latex?l(y_i,\hat{y}_i^{(t)})">，也就是原标签和树预测值的差距最小。只是计算逻辑从先算单个样本的误差再汇总所有样本，也就是<img src="https://latex.codecogs.com/svg.latex?\sum_{i=1}^n">，变成先算单个叶节点的误差，再汇总所有叶节点，也就是<img src="https://latex.codecogs.com/svg.latex?\sum_{j=1}^T">。而之所以能转换，是因为叶节点和样本x之间是对应的<img src="https://latex.codecogs.com/svg.latex?f_t(x)=w_{q(x)}">。而为什么要转换，自然是无法直接求解误差函数，而转换后就可以用树模型的训练、叶节点值的迭代来进行误差函数的计算了。
+
+
+
+![image-20190613150358062](http://ww1.sinaimg.cn/large/006tNc79gy1g3zjj0bfujj30e30cjt9h.jpg)
 
 #### 3. 得到解表达式
 
