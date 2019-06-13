@@ -2,9 +2,9 @@
 
 <img src="https://latex.codecogs.com/gif.latex?\begin{pmatrix}&space;a_{11}&space;&&space;\cdots&space;&&space;a_{1n}\\&space;\vdots&space;&&space;\ddots&space;&&space;\vdots\\&space;a_{m1}&space;&&space;\cdots&space;&&space;a_{mn}&space;\end{pmatrix}">
 
+<img src="https://latex.codecogs.com/gif.latex?w">
 
-
-LogisR与LinearR的![](https://latex.codecogs.com/gif.latex?h_\theta)函数不一样，若$L(w,b) $直接仿照LinearR <img src="https://latex.codecogs.com/gif.latex?L(w,b)=\frac{1}{2m}\sum(p(y=1|x,w)-y^{(i)})^2">，导数会得到非凸优化（不能用梯度下降求解）。
+LogisR与LinearR的![](https://latex.codecogs.com/gif.latex?h_\theta)函数不一样，若L(w,b) 直接仿照LinearR <img src="https://latex.codecogs.com/gif.latex?L(w,b)=\frac{1}{2m}\sum(p(y=1|x,w)-y^{(i)})^2">，导数会得到非凸优化（不能用梯度下降求解）。
 
 L(w,b)的导数得是凸优化，因为![](https://latex.codecogs.com/gif.latex?h_\theta)不一样，所以L(w,b)另行考虑为：
 

@@ -14,7 +14,7 @@
 
 训练是要达到好的效果的，怎么评估训练效果呢，最简单直接的方法就是算原始标签![](https://latex.codecogs.com/gif.latex?y)与训练得到的![](https://latex.codecogs.com/gif.latex?y^{(i)})相减求<font color='red'>训练误差</font>。训练时所有样本的总训练误差的函数表示即误差函数，用公式表达可以写成：
 
-![](https://latex.codecogs.com/gif.latex?L(w)=\sum_i^m(y^{{i}}-y)^2)
+<img src="https://latex.codecogs.com/gif.latex?L(w)=\sum_{i=1}^m(y^{(i)}-y)^2">
 
 模型好就是训练误差小，即损失函数最小。因此训练目的就是取得L(w)最小时的系数w。（有了系数w，在新样本来时，就可以输入x变量，与系数计算得到预测y值了）
 
